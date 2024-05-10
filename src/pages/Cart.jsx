@@ -14,7 +14,7 @@ const Cart = () => {
         <div className="row">
           <div className="col-md-12 py-5 bg-light text-center">
             <h4 className="p-3 display-5">Your Cart is Empty</h4>
-            <Link to="/" className="btn  btn-outline-dark mx-4">
+            <Link to="/product" className="btn  btn-outline-dark mx-4">
               <i className="fa fa-arrow-left"></i> Continue Shopping
             </Link>
           </div>
@@ -145,11 +145,45 @@ const Cart = () => {
                       </li>
                     </ul>
 
+                    <hr />
+
+                    <div className="card-header py-3 bg-light">
+                    <h5 className="mb-0">Customer Details</h5>
+                  </div>
+                  <ul className="list-group list-group-flush">
+                      <li className="list-group-item d-flex justify-content-between align-items-center border-0 px-0 pb-0">
+                        Customer Name<span>John</span>
+                      </li>
+                      <li className="list-group-item d-flex justify-content-between align-items-center px-0">
+                        Email
+                        <span>johnabc@gmail.com</span>
+                      </li>
+                      <li className="list-group-item d-flex justify-content-between align-items-center px-0">
+                        Phone
+                        <span>+12345678</span>
+                      </li>
+                      <li className="list-group-item d-flex justify-content-between align-items-center border-0 px-0 mb-3">
+                        <div className="col-6 px-0 mx-0">
+                          <strong>Biling address</strong>
+                          <p>123 ShipBob Street,<br />
+                            ABC,<br />
+                            Chicago</p>
+                        </div>
+                        <div className="col-8 px-0 mx-0">
+                        <strong>Shipping address</strong>
+                        <p>123 ShipBob Street,<br />
+                            ABC,<br />
+                            Chicago</p>
+                          </div>
+                      </li>
+                    </ul>
+
                     <Link
-                      to="/checkout"
+                      to="/"
                       className="btn btn-dark btn-lg btn-block"
+                      style={{backgroundColor:"#ffa734",border:"#ececec"}}
                     >
-                      Go to checkout
+                      Confirm Order
                     </Link>
                   </div>
                 </div>

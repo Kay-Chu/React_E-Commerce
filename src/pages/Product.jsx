@@ -7,6 +7,9 @@ import { addCart } from "../redux/action";
 
 import { Footer, Navbar } from "../components";
 
+import productData from "../productData";
+
+
 const Product = () => {
   const { id } = useParams();
   const [product, setProduct] = useState([]);
@@ -24,15 +27,16 @@ const Product = () => {
     const getProduct = async () => {
       setLoading(true);
       setLoading2(true);
-      const response = await fetch(`https://fakestoreapi.com/products/${id}`);
-      const data = await response.json();
-      setProduct(data);
+      // const response = await fetch(`https://fakestoreapi.com/products/${id}`);
+      // const data = await response.json();
+      // setProduct(data);
+      setProduct(productData[id]);
       setLoading(false);
-      const response2 = await fetch(
-        `https://fakestoreapi.com/products/category/${data.category}`
-      );
-      const data2 = await response2.json();
-      setSimilarProducts(data2);
+      // const response2 = await fetch(
+      //   `https://fakestoreapi.com/products/category/${data.category}`
+      // );
+      // const data2 = await response2.json();
+      setSimilarProducts(productData);
       setLoading2(false);
     };
     getProduct();
@@ -42,6 +46,7 @@ const Product = () => {
     return (
       <>
         <div className="container my-5 py-2">
+
           <div className="row">
             <div className="col-md-6 py-3">
               <Skeleton height={400} width={400} />
@@ -78,21 +83,34 @@ const Product = () => {
             <div className="col-md-6 col-md-6 py-5">
               <h4 className="text-uppercase text-muted">{product.category}</h4>
               <h1 className="display-5">{product.title}</h1>
-              <p className="lead">
-                {product.rating && product.rating.rate}{" "}
-                <i className="fa fa-star"></i>
+              <p className="lead color-gray">
+                {/* {product.rating && product.rating.rate}{" "}
+                <i className="fa fa-star"></i> */}
+                "{product.description}"
               </p>
-              <h3 className="display-6  my-4">${product.price}</h3>
-              <p className="lead">{product.description}</p>
-              <button
-                className="btn btn-outline-dark"
-                onClick={() => addProduct(product)}
+              <h4 className="display-6  my-4">${product.price}</h4>
+              {/* <p className="lead">{product.description}</p> */}
+              <div
+                className="btn btn-outline-secondary p-2"
+                
               >
-                Add to Cart
+
+                <Link to="/product" className="customized_link"
+                
+                >
+                &lt; Go Back
+                </Link>
+              </div>
+              <button
+                className="customized_button mx-3"
+                style={{ width: "120px" }}
+                onClick={() => addProduct(product)}
+
+              >
+                <Link to="/cart" className="customized_link">
+                  Go Checkout
+                  </Link>
               </button>
-              <Link to="/cart" className="btn btn-dark mx-3">
-                Go to Cart
-              </Link>
             </div>
           </div>
         </div>
@@ -149,13 +167,15 @@ const Product = () => {
                   <div className="card-body">
                     <Link
                       to={"/product/" + item.id}
-                      className="btn btn-dark m-1"
+                      className="btn m-1"
+                      style={{ borderColor: "#dee2e6", color: "#ff9213" }}
                     >
                       Buy Now
                     </Link>
                     <button
-                      className="btn btn-dark m-1"
-                      onClick={() => addProduct(item)}
+                      className="btn m-1"
+                      style={{ backgroundColor: "#ff9213", color: "white" }}
+                      onClick={() => addProduct(product)}
                     >
                       Add to Cart
                     </button>
@@ -172,15 +192,12 @@ const Product = () => {
     <>
       <Navbar />
       <div className="container">
+
         <div className="row">{loading ? <Loading /> : <ShowProduct />}</div>
         <div className="row my-5 py-5">
           <div className="d-none d-md-block">
-          <h2 className="">You may also Like</h2>
-            <Marquee
-              pauseOnHover={true}
-              pauseOnClick={true}
-              speed={50}
-            >
+            <h4 className="">Recommend For You</h4>
+            <Marquee pauseOnHover={true} pauseOnClick={true} speed={50}>
               {loading2 ? <Loading2 /> : <ShowSimilarProduct />}
             </Marquee>
           </div>

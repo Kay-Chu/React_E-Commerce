@@ -1,10 +1,10 @@
 import React from "react";
-import { Footer, Navbar } from "../components";
+import { Footer, Navbar, ShoppingCart } from "../components";
 const ContactPage = () => {
   return (
     <>
       <Navbar />
-      <div className="container my-3 py-3">
+      <div className="container my-3 mt-2 mb-3 p-5 py-3 bg-light ">
         <h1 className="text-center">Contact Us</h1>
         <hr />
         <div class="row my-4 h-100">
@@ -14,7 +14,7 @@ const ContactPage = () => {
                 <label for="Name">Name</label>
                 <input
                   type="email"
-                  class="form-control"
+                  className="form-control"
                   id="Name"
                   placeholder="Enter your name"
                 />
@@ -23,7 +23,7 @@ const ContactPage = () => {
                 <label for="Email">Email</label>
                 <input
                   type="email"
-                  class="form-control"
+                  className="form-control"
                   id="Email"
                   placeholder="name@example.com"
                 />
@@ -32,14 +32,14 @@ const ContactPage = () => {
                 <label for="Password">Message</label>
                 <textarea
                   rows={5}
-                  class="form-control"
+                  className="form-control"
                   id="Password"
                   placeholder="Enter your message"
                 />
               </div>
               <div className="text-center">
                 <button
-                  class="my-2 px-4 mx-auto btn btn-dark"
+                  className="my-2 px-4 mx-auto btn btn-dark"
                   type="submit"
                   disabled
                 >
@@ -50,6 +50,7 @@ const ContactPage = () => {
           </div>
         </div>
       </div>
+      <ShoppingCart />
       <Footer />
     </>
   );
